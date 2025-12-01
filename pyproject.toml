@@ -1,0 +1,10 @@
+[project]
+name = "stormdb"
+version = "0.7.dev0"
+description = "Tools for accessing StormDb @ CFIN"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "requests",
+    "six",
+]
