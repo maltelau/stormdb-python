@@ -653,7 +653,7 @@ class Query(object):
                     key_val_pair[1].sort(key=lambda x: os.path.splitext(x)[0])
 
                 elif 'path' in key_val_pair[0]:
-                    m = re.search('\d{3}\.(.+?)/files', key_val_pair[1])
+                    m = re.search('\\d{3}\.(.+?)/files', key_val_pair[1])
                     info.append(['seriename', m.group(1)])
                 info.append(key_val_pair)
             info_dict = {key: value for (key, value) in info}

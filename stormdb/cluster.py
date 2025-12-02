@@ -106,7 +106,7 @@ class Cluster(object):
         lim = self._query('qconf -sq ' + queue +
                           '| grep h_vmem | awk {\'print $2\'}')[0]
 
-        _, lim_int, lim_units = re.split('(\d+)', lim)
+        _, lim_int, lim_units = re.split('(\\d+)', lim)
         assert isinstance(int(lim_int), int)
         assert isinstance(lim_units, string_types)
 
@@ -238,8 +238,8 @@ class ClusterJob(object):
                     'Maximum number of parallel threads is one (1) when total '
                     'memory consumption is specified.')
             # XXX would be nice with some sanity checking here...
-            _, totmem, totmem_unit = re.split('(\d+)', self.total_memory)
-            _, memlim, memlim_unit = re.split('(\d+)', h_vmem)
+            _, totmem, totmem_unit = re.split('(\\d+)', self.total_memory)
+            _, memlim, memlim_unit = re.split('(\\d+)', h_vmem)
 
             if totmem_unit != memlim_unit:
                 units = dict(k=1e3, m=1e6, g=1e9, t=1e12)
@@ -365,7 +365,7 @@ class ClusterJob(object):
         else:
             # py2-3 safety
             output = output.decode('ascii', 'ignore').rstrip()
-            m = re.search('(\d+)', output)
+            m = re.search('(\\d+)', output)
             self._jobid = m.group(1)
             if self._cleanup_qsub_job:
                 self._delete_qsub_job()
